@@ -1,0 +1,32 @@
+{
+  "identifier" : "Products",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "pro_lifetime",
+      "localizations" : [
+        {
+          "description" : "Remove ads and unlock AI features (when available).",
+          "displayName" : "Study Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "dev.studycount.pro",
+      "referenceName" : "Study Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

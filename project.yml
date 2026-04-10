@@ -1,0 +1,72 @@
+name: StudyCount
+options:
+  bundleIdPrefix: dev.studycount
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "0.1.0"
+schemes:
+  StudyCount:
+    build:
+      targets:
+        StudyCount: all
+    test:
+      targets:
+        - StudyCountTests
+    run:
+      storeKitConfiguration: StudyCount/Configuration/Products.storekit
+targets:
+  StudyCount:
+    type: application
+    platform: iOS
+    sources:
+      - path: StudyCount/StudyCount
+        excludes:
+          - "**/StudyCountWidget/**"
+    resources:
+      - StudyCount/StudyCount/PrivacyInfo.xcprivacy
+    dependencies:
+      - target: StudyCountWidgetExtension
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.studycount.StudyCount
+        INFOPLIST_FILE: StudyCount/StudyCount/Info.plist
+        CODE_SIGN_ENTITLEMENTS: StudyCount/StudyCount/StudyCount.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        DEVELOPMENT_TEAM: ""
+  StudyCountWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: StudyCount/StudyCountWidget
+      - path: StudyCount/StudyCount/App/AppConfiguration.swift
+      - path: StudyCount/StudyCount/Services/AppModelContainer.swift
+      - path: StudyCount/StudyCount/Services/LogicalDay.swift
+      - path: StudyCount/StudyCount/Models
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.studycount.StudyCount.widget
+        INFOPLIST_FILE: StudyCount/StudyCountWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: StudyCount/StudyCountWidget/StudyCountWidget.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        DEVELOPMENT_TEAM: ""
+  StudyCountTests:
+    type: bundle.unit-test
+    platform: iOS
+    hostApplication: StudyCount
+    sources:
+      - path: StudyCount/StudyCountTests
+    dependencies:
+      - target: StudyCount
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
